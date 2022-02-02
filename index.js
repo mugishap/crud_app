@@ -6,23 +6,30 @@ const users = [{
     name:'Tresor',
     age:20,
     gender:'Male'
+},{
+    id:2,
+    name:'Mugisha',
+    age:16,
+    gender:'Male'
 }]
+
 //api to get all users
 
 app.get('/api/users', function (req, res) {
   res.send(users)
 })
 //api to get user by id
-app.get('api/users/:id',(req,res)=>{
+
+app.get('/api/users/:id',(req,res)=>{
     for (const i in users) {
-        if (users[i].id == req.params.id) {
-        }else{return res.send(users[i])            
-        }
-        
+        if (users[i].id == req.params.id) 
+        return res.send(users[i])            
+      
     }
-    return res.status(404).send(`User with id(${req.params.id} was not found)`)
+    return res.status(404).send(`User with id(${req.params.id}) was not found`)
 
 })
+//api to get user
 app.listen(3000,()=>{
-    console.log("server is running ...")
+    console.log("Yooo Precieux,server is running ...")
 })
